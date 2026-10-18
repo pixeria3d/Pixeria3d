@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>pixeria3d baskı</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230D0D0F'/%3E%3Cpath d='M38 14h24l-4 12 14 22-5 22-9 12H42l-9-12-5-22 14-22z' fill='%23FF7A1A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0D0F;--surface:#17171A;--ink:#F5F1EC;--muted:#A9A39B;--line:#2B2B30;--accent:#FF7A1A;--on-accent:#0D0D0F;--fil:#FFC38A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D0D0F;--surface:#17171A;--ink:#F5F1EC;--muted:#A9A39B;--line:#2B2B30;--accent:#FF7A1A;--on-accent:#0D0D0F;--fil:#FFC38A}}
+:root[data-theme="dark"]{--bg:#0D0D0F;--surface:#17171A;--ink:#F5F1EC;--muted:#A9A39B;--line:#2B2B30;--accent:#FF7A1A;--on-accent:#0D0D0F;--fil:#FFC38A}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Sora,system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font-weight:800;font-size:1.15rem;text-decoration:none;letter-spacing:-.02em}
+.logo b{color:var(--accent)}
+.mark{display:inline-block;width:24px;height:32px;margin-right:9px;vertical-align:middle;clip-path:polygon(30% 0,70% 0,64% 18%,86% 45%,78% 80%,64% 100%,36% 100%,22% 80%,14% 45%,36% 18%);background:repeating-linear-gradient(0deg,var(--accent) 0 3px,transparent 3px 5px)}
+nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding:36px 0 56px}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.03em;font-weight:800}
+.hero p{color:var(--muted);max-width:46ch;margin:0 0 24px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);border:0;border-radius:10px;padding:12px 20px;font:600 .95rem Sora,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);margin-left:8px}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--fil);outline-offset:2px}
+.vase{width:min(260px,70%);aspect-ratio:3/4;margin:0 auto;clip-path:polygon(30% 0,70% 0,64% 18%,86% 45%,78% 80%,64% 100%,36% 100%,22% 80%,14% 45%,36% 18%);background:repeating-linear-gradient(0deg,var(--fil) 0 5px,transparent 5px 8px) top/100% 14% no-repeat,repeating-linear-gradient(0deg,var(--accent) 0 5px,transparent 5px 8px) bottom/100% 86% no-repeat}
+h2{font-size:1.6rem;letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 20px}
+section{padding:28px 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 16px;font:600 .85rem Sora,system-ui,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:4/3;display:grid;place-items:center;font-size:2.6rem;font-weight:800;color:var(--accent);background:repeating-linear-gradient(0deg,var(--line) 0 2px,transparent 2px 7px)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card .in{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h3{margin:0;font-size:1.02rem}
+.card p{margin:0;color:var(--muted);font-size:.88rem;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.price{font-weight:800}
+.card .btn{padding:8px 14px;font-size:.85rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.step b{display:block;color:var(--accent);margin-bottom:4px}
+.step span{color:var(--muted);font-size:.9rem}
+.form{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:12px;max-width:560px}
+label{font-size:.85rem;font-weight:600;display:grid;gap:5px}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+footer{border-top:1px solid var(--line);margin-top:32px;padding:24px 0;color:var(--muted);font-size:.9rem}
+.arow{display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}.arow span{flex:1}#a-durum{color:var(--muted);font-size:.9rem;margin:0}
+@media (max-width:720px){.hero{grid-template-columns:1fr}.steps{grid-template-columns:1fr}nav a:not(:last-child){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#" aria-label="Pixeria3d"><span class="mark"></span>Pixeria<b>3d</b></a>
+    <nav><a href="#urunler">Ürünler</a><a href="#nasil">Nasıl çalışır</a><a href="#ozel">Özel sipariş</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Her katmanda bir detay.</h1>
+      <p>Dekor, figür ve günlük kullanım ürünlerini 3D yazıcıda basıyorum. Hazır ürünlerden seçebilir ya da kendi tasarımınızı yaptırabilirsiniz.</p>
+      <a class="btn" href="#urunler">Ürünlere göz at</a><a class="btn ghost" href="#ozel">Özel baskı iste</a>
+    </div>
+    <div class="vase" role="img" aria-label="Katmanlı baskı çizgileriyle gösterilen bir vazo"></div>
+  </div>
+
+  <section id="yonetim" hidden>
+    <h2>Yönetici paneli</h2>
+    <p class="sub">Bu bölümü sadece siz görürsünüz. Değişiklikten sonra “Siteyi yayınla”ya basın.</p>
+    <div class="form" style="max-width:none">
+      <label>WhatsApp numarası<input id="a-wa" inputmode="numeric" placeholder="905551234567"></label>
+      <div id="a-liste"></div>
+      <label>Ürün adı<input id="a-ad"></label>
+      <label>Kategori<input id="a-kat" placeholder="Dekor"></label>
+      <label>Açıklama<input id="a-acik"></label>
+      <label>Fiyat (₺)<input id="a-fiyat" inputmode="numeric"></label>
+      <label>Görsel<input id="a-img" type="file" accept="image/*"></label>
+      <div><button class="btn" id="a-ekle" type="button">Ürünü kaydet</button><button class="btn ghost" id="a-yayin" type="button">Siteyi yayınla</button></div>
+      <p id="a-durum"></p>
+    </div>
+  </section>
+
+  <section id="urunler">
+    <h2>Ürünler</h2>
+    <p class="sub">Beğendiğiniz ürünün altındaki düğmeyle WhatsApp’tan sipariş verebilirsiniz.</p>
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="nasil">
+    <h2>Nasıl çalışır</h2>
+    <p class="sub">Siparişten kargoya üç adım.</p>
+    <div class="steps">
+      <div class="step"><b>1. Seçin ya da anlatın</b><span>Hazır ürünlerden seçin veya ne istediğinizi yazın.</span></div>
+      <div class="step"><b>2. Basılır</b><span>Renk ve malzemeyi birlikte netleştirir, baskıya başlarım.</span></div>
+      <div class="step"><b>3. Kargolanır</b><span>Hazır olunca paketleyip adresinize gönderirim.</span></div>
+    </div>
+  </section>
+
+  <section id="ozel">
+    <h2>Özel sipariş</h2>
+    <p class="sub">Aklınızdaki parçayı yazın, fiyat ve süreyi size WhatsApp’tan bildireyim.</p>
+    <div class="form">
+      <label>Adınız<input id="f-ad" autocomplete="name"></label>
+      <label>Ne basılsın?<textarea id="f-not" rows="3" placeholder="Örn. 10 cm yüksekliğinde isimli anahtarlık"></textarea></label>
+      <label>Malzeme
+        <select id="f-mal"><option>PLA</option><option>PETG</option><option>Emin değilim</option></select>
+      </label>
+      <button class="btn" id="f-gonder" type="button">WhatsApp’ta gönder</button>
+    </div>
+  </section>
+
+  <footer><p style="margin:0 0 6px">Yeni işler ve müşteri fotoğrafları için bizi takip edin: <a href="https://instagram.com/pixeria3d" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">Instagram @pixeria3d</a></p>© <span id="yil"></span> pixeria3d baskı. Tüm ürünler sipariş üzerine basılır.</footer>
+</div>
+
+<script type="application/json" id="veri">{"whatsapp":"905535282767","urunler":null}</script>
+<script>
+// Ayarlar: numarayı 90 ile başlayıp boşluksuz yazın (örn. 905551234567)
+var VERI = JSON.parse(document.getElementById("veri").textContent);
+var WHATSAPP = VERI.whatsapp;
+
+// Ürünleri buradan düzenleyin. Görsel için img alanına görsel adresi/veri ekleyin.
+var ORNEK = [
+  {ad:"Geometrik vazo", kat:"Dekor", aciklama:"Katmanlı yüzey, kuru çiçek için ideal.", fiyat:240, img:""},
+  {ad:"Masaüstü kalemlik", kat:"Ofis", aciklama:"Altı gözlü, düzenli bir masa için.", fiyat:120, img:""},
+  {ad:"Kulaklık standı", kat:"Ofis", aciklama:"Sağlam ve hafif, her masaya uyar.", fiyat:180, img:""},
+  {ad:"İsimli anahtarlık", kat:"Aksesuar", aciklama:"İsminiz ve rengiyle kişiselleştirilir.", fiyat:60, img:""},
+  {ad:"Ejderha figürü", kat:"Figür", aciklama:"Detaylı, boyanmaya hazır koleksiyon figürü.", fiyat:350, img:""},
+  {ad:"Telefon tutucu", kat:"Aksesuar", aciklama:"Katlanabilir, çantaya sığar.", fiyat:90, img:""}
+];
+if(!VERI.urunler) VERI.urunler = ORNEK;
+var URUNLER = VERI.urunler;
+
+var secili = "Hepsi";
+var chipsEl = document.getElementById("chips");
+var gridEl = document.getElementById("grid");
+
+function wa(mesaj){
+  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mesaj);
+}
+
+function chipleriCiz(){
+  var kats = ["Hepsi"];
+  URUNLER.forEach(function(u){ if(kats.indexOf(u.kat) < 0) kats.push(u.kat); });
+  chipsEl.innerHTML = "";
+  kats.forEach(function(k){
+    var b = document.createElement("button");
+    b.className = "chip"; b.type = "button"; b.textContent = k;
+    b.setAttribute("aria-pressed", k === secili ? "true" : "false");
+    b.onclick = function(){ secili = k; chipleriCiz(); urunleriCiz(); };
+    chipsEl.appendChild(b);
+  });
+}
+
+function urunleriCiz(){
+  gridEl.innerHTML = "";
+  URUNLER.filter(function(u){ return secili === "Hepsi" || u.kat === secili; }).forEach(function(u){
+    var c = document.createElement("div");
+    c.className = "card";
+    var ph = u.img ? '<img src="' + u.img + '" alt="' + u.ad + '">' : u.ad.charAt(0);
+    c.innerHTML = '<div class="ph">' + ph + '</div><div class="in"><h3>' + u.ad + '</h3><p>' + u.aciklama + '</p><div class="row"><span class="price">' + u.fiyat + ' ₺</span><a class="btn" target="_blank" rel="noopener" href="' + wa("Merhaba, “" + u.ad + "” ürününü sipariş vermek istiyorum.") + '">Sipariş ver</a></div></div>';
+    gridEl.appendChild(c);
+  });
+}
+
+document.getElementById("f-gonder").onclick = function(){
+  var ad = document.getElementById("f-ad").value.trim();
+  var not = document.getElementById("f-not").value.trim();
+  var mal = document.getElementById("f-mal").value;
+  if(!not){ document.getElementById("f-not").focus(); return; }
+  var m = "Merhaba, özel baskı istiyorum.\nAd: " + (ad || "-") + "\nİstek: " + not + "\nMalzeme: " + mal;
+  window.open(wa(m), "_blank", "noopener");
+};
+
+document.getElementById("yil").textContent = new Date().getFullYear();
+// Yönetici paneli: yalnızca sayfanın sahibi/düzenleyicisi görür
+function $(id){return document.getElementById(id);}
+var duz=-1, yeniImg="";
+function durum(m){$("a-durum").textContent=m;}
+function listeCiz(){
+  var el=$("a-liste"); el.innerHTML="";
+  URUNLER.forEach(function(u,i){
+    var r=document.createElement("div"); r.className="arow";
+    var t=document.createElement("span"); t.textContent=u.ad+" · "+u.fiyat+" ₺";
+    var d=document.createElement("button"); d.className="chip"; d.type="button"; d.textContent="Düzenle";
+    d.onclick=function(){duz=i;$("a-ad").value=u.ad;$("a-kat").value=u.kat;$("a-acik").value=u.aciklama;$("a-fiyat").value=u.fiyat;yeniImg=u.img||"";durum("“"+u.ad+"” düzenleniyor.");};
+    var s=document.createElement("button"); s.className="chip"; s.type="button"; s.textContent="Sil";
+    s.onclick=function(){URUNLER.splice(i,1);listeCiz();chipleriCiz();urunleriCiz();durum("Silindi. Siteyi yayınlamayı unutmayın.");};
+    r.appendChild(t);r.appendChild(d);r.appendChild(s);el.appendChild(r);
+  });
+}
+function adminAc(){
+  $("yonetim").hidden=false;
+  $("a-wa").value=VERI.whatsapp==="90XXXXXXXXXX"?"":VERI.whatsapp;
+  listeCiz();
+  $("a-img").onchange=function(){
+    var f=this.files[0]; if(!f)return;
+    durum("Görsel yükleniyor…");
+    claude.use("assets").then(function(a){
+      if(!a){durum("Görsel yükleme bu hesapta kullanılamıyor.");return;}
+      return a.upload(f).then(function(r){yeniImg=r.url;durum("Görsel yüklendi. Ürünü kaydedin.");});
+    }).catch(function(){durum("Görsel yüklenemedi.");});
+  };
+  $("a-ekle").onclick=function(){
+    var ad=$("a-ad").value.trim(); if(!ad){$("a-ad").focus();return;}
+    var u={ad:ad,kat:$("a-kat").value.trim()||"Diğer",aciklama:$("a-acik").value.trim(),fiyat:Number($("a-fiyat").value)||0,img:yeniImg};
+    if(duz>=0) URUNLER[duz]=u; else URUNLER.push(u);
+    duz=-1; yeniImg="";
+    ["a-ad","a-kat","a-acik","a-fiyat","a-img"].forEach(function(id){$(id).value="";});
+    listeCiz();chipleriCiz();urunleriCiz();durum("Kaydedildi. Siteyi yayınlamayı unutmayın.");
+  };
+  $("a-yayin").onclick=function(){
+    var no=$("a-wa").value.replace(/\D/g,"");
+    if(no){VERI.whatsapp=no;WHATSAPP=no;}
+    claude.use("artifact").then(function(art){
+      if(!art){durum("Yayınlama bu hesapta kullanılamıyor.");return;}
+      var c=document.documentElement.cloneNode(true);
+      c.querySelector("#veri").textContent=JSON.stringify(VERI).replace(/</g,"\\u003c");
+      ["chips","grid","a-liste"].forEach(function(id){c.querySelector("#"+id).innerHTML="";});
+      c.querySelector("#a-durum").textContent="";
+      c.querySelector("#yonetim").setAttribute("hidden","");
+      durum("Yayınlanıyor…");
+      return art.publish("<!doctype html>\n"+c.outerHTML);
+    }).catch(function(e){durum("Yayınlanamadı: "+((e&&(e.code||e.message))||"bilinmeyen hata"));});
+  };
+}
+if(window.claude){
+  claude.use("user").then(function(u){ if(u && u.canEdit()) adminAc(); }).catch(function(){});
+}
+
+chipleriCiz(); urunleriCiz();
+</script>
+</body>
+</html>
